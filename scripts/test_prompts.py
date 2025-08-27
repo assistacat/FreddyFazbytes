@@ -2,42 +2,56 @@ import openai
 import pandas as pd
 from pathlib import Path
 
-# Load your cleaned reviews file
 data_path = Path("/Users/jiayi/Downloads/techjam/cleaned_reviews.csv")
 df = pd.read_csv(data_path)
 
-# Load the few-shot prompt
 with open("/Users/jiayi/Downloads/techjam/prompts/few_shot_prompt.txt", "r") as f:
     few_shot_prompt = f.read()
 
+from gemma import GemmaClient
+import pandas as pd
+from pathlib import Path
+
+
+API_KEY = "AIzaSyAA2hxaCtptJ5knSxQFfbWjBy43dEoV9cI"
+MODEL_NAME = "gemma-2-9b-instruct"
+PROMPT_TYPE = "few"
+
+# Paths
+DATA_PATH = Path("cleaned_reviews_nonempty.csv")
+OUTPUT_PATH = Path("classified_reviews_gemma.csv")
+
+client = GemmaClient(api_key=API_KEY)
+
+
+df = pd.read_csv(DATA_PATH)
+
+prompt_file = "prompts/few_shot_prompt.txt" if PROMPT_TYPE == "few" else "prompts/zero_shot_prompt.txt"
+with open(prompt_file, "r") as f:
+    base_prompt = f.read()
+
 categories = []
 
-# Loop through all rows
 for idx, row in df.iterrows():
-    # Fill placeholders in the prompt
-    prompt = few_shot_prompt.format(
+    # Fill in placeholders
+    prompt = base_prompt.format(
         clean_text=row["review"],
         rating=row["rating"],
         store_name=row["store_name"],
         reviewer_name=row["reviewer_name"]
     )
 
-    # Send prompt to GPT
-    response = openai.ChatCompletion.create(
-        model="gpt-4o-mini",  # use gpt-4o for better accuracy if needed
-        messages=[{"role": "user", "content": prompt}],
+    response = client.generate(
+        model=MODEL_NAME,
+        prompt=prompt,
         temperature=0
     )
 
-    # Extract category
-    category = response["choices"][0]["message"]["content"].strip()
+    category = response.text.strip()
     categories.append(category)
 
-# Add results back into the DataFrame
+    print(f"{idx+1}/{len(df)} | Review: {row['review'][:50]}... | Predicted: {category}")
+
 df["category"] = categories
-
-# Save into a new file
-output_path = Path("/Users/jiayi/Downloads/techjam/classified_reviews.csv")
-df.to_csv(output_path, index=False)
-
-print(f"✅ Classification complete! Saved to {output_path}")
+df.to_csv(OUTPUT_PATH, index=False)
+print(f"Classification complete! Saved to {OUTPUT_PATH}")
