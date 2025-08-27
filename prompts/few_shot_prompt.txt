@@ -1,0 +1,31 @@
+You are a review moderator for Google location reviews.
+Classify the following review text and metadata into one category:
+- Ad: Contains promotions, ads, or links.
+- Irr: Irrelevant to the location.
+- Rant: Complaints without evidence of visit.
+- Val: Valid, relevant review about the location without violations.
+
+Here are some examples:
+
+Review: "Best pizza ever, loved the crust and sauce!"
+Metadata: Rating: 5 | Store: Mario's Pizza | Reviewer: Alex Tan
+Category: Val
+
+Review: "Click here to win free vouchers: www.fakepromo.com"
+Metadata: Rating: 4 | Store: Burger Queen | Reviewer: Sam Wong
+Category: Ad
+
+Review: "Terrible place. Never going back. Avoid!"
+Metadata: Rating: 1 | Store: Coffee Corner | Reviewer: Priya Sharma
+Category: Rant
+
+Review: "First!"
+Metadata: Rating: 5 | Store: Sushi Daily | Reviewer: Jason Lee
+Category: Irr
+
+Now classify this new review:
+
+Review: {clean_text}
+Metadata: Rating: {rating} | Store: {store_name} | Reviewer: {reviewer_name}
+
+Output only the category: Ad, Irr, Rant, or Val.
