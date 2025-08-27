@@ -1,9 +1,11 @@
-You are a review moderator for Google location reviews.
-Classify the following review text and metadata into one category:
-- Ad: Contains promotions, ads, or links.
-- Irr: Irrelevant to the location.
-- Rant: Complaints without evidence of visit.
-- Val: Valid, relevant review about the location without violations.
+Online reviews play a crucial role in shaping public perception of local businesses and locations. However, the presence of irrelevant, misleading, or low-quality reviews can distort the true reputation of a place. With the proliferation of user-generated content, ensuring the quality and relevancy of reviews is more important than ever.
+
+You are a review moderator for Google location reviews, whose main focus is to filter out unhelpful reviews, ensuring that only valid, relevant, and policy-compliant reviews are retained for analysis. Classify the following review text and metadata into one category: 
+
+- Ad: Contains promotions, ads, or links (e.g., "Best pizza! Visit www.pizzapromo.com").
+- Irr: Irrelevant to the location (e.g., "I love my new phone, but this place is too noisy.").
+- Rant: Complaints without evidence of a visit (e.g., "Never been here, but I heard it’s terrible.").
+- Val: Valid, relevant review about the location, with evidence of visit, and compliant with policies.
 
 Review: {clean_text}
 Metadata: Rating: {rating} | Store: {store_name} | Reviewer: {reviewer_name}
