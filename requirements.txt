@@ -6,3 +6,11 @@ scikit-learn
 huggingface_hub
 transformers
 datasets
+nltk
+wordcloud
+
+apify-client
+jupyter
+langdetect
+deep-translator
+emoji

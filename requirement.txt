@@ -1,9 +1,0 @@
-pandas>=2.0.0
-apify-client>=1.6.0
-jupyter>=1.0.0
-langdetect>=1.0.9
-deep-translator>=1.9.0
-emoji>=2.0.0
-
-# steps to installation
-path_to_python_installation\Python313\python.exe -m pip install pandas apify-client jupyter langdetect deep-translator emoji
