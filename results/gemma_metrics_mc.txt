@@ -1,0 +1,17 @@
+=== Gemma ===
+Mode: multiclass
+Macro Precision: 0.299 Recall: 0.474 F1: 0.319
+
+Per-class report:
+              precision    recall  f1-score   support
+
+          Ad      0.200     1.000     0.333         1
+         Irr      0.000     0.000     0.000         2
+        Rant      0.000     0.000     0.000         0
+         Val      0.994     0.894     0.942       189
+
+    accuracy                          0.885       192
+   macro avg      0.299     0.474     0.319       192
+weighted avg      0.980     0.885     0.929       192
+
+Confusion matrix image: results/confusion_Gemma_multiclass.png
