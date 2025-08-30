@@ -1,0 +1,17 @@
+=== NoiseModel ===
+Mode: multiclass
+Macro Precision: 0.250 Recall: 0.250 F1: 0.250
+
+Per-class report:
+              precision    recall  f1-score   support
+
+          Ad      0.000     0.000     0.000         0
+         Irr      1.000     1.000     1.000        16
+        Rant      0.000     0.000     0.000         0
+         Val      0.000     0.000     0.000         0
+
+    accuracy                          1.000        16
+   macro avg      0.250     0.250     0.250        16
+weighted avg      1.000     1.000     1.000        16
+
+Confusion matrix image: results/confusion_NoiseModel_multiclass.png

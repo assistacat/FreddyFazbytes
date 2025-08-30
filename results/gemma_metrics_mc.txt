@@ -1,17 +1,17 @@
-=== Gemma ===
+=== OldPrompt ===
 Mode: multiclass
-Macro Precision: 0.299 Recall: 0.474 F1: 0.319
+Macro Precision: 0.774 Recall: 0.931 F1: 0.837
 
 Per-class report:
               precision    recall  f1-score   support
 
-          Ad      0.200     1.000     0.333         1
-         Irr      0.000     0.000     0.000         2
-        Rant      0.000     0.000     0.000         0
+          Ad      0.818     1.000     0.900        18
+         Irr      0.615     0.889     0.727        18
+        Rant      0.667     0.941     0.780        17
          Val      0.994     0.894     0.942       189
 
-    accuracy                          0.885       192
-   macro avg      0.299     0.474     0.319       192
-weighted avg      0.980     0.885     0.929       192
+    accuracy                          0.905       242
+   macro avg      0.774     0.931     0.837       242
+weighted avg      0.930     0.905     0.911       242
 
-Confusion matrix image: results/confusion_Gemma_multiclass.png
+Confusion matrix image: results/confusion_OldPrompt_multiclass.png
