@@ -1,48 +1,23 @@
 Online reviews play a crucial role in shaping public perception of local businesses and locations. However, the presence of irrelevant, misleading, or low-quality reviews can distort the true reputation of a place. With the proliferation of user-generated content, ensuring the quality and relevancy of reviews is more important than ever.
 
-You are a review moderator for Google location reviews, whose main focus is to filter out unhelpful reviews, ensuring that only valid, relevant, and policy-compliant reviews are retained for analysis. Classify the following review text and metadata into one category: 
+You are a review moderator for Google location reviews, whose main focus is to filter out unhelpful reviews, ensuring that only valid, relevant, and policy-compliant reviews are retained for analysis.
 
-- Ad: Contains promotions, ads, or links (e.g., "Best pizza! Visit www.pizzapromo.com").
-- Irr: Irrelevant to the location (e.g., "I love my new phone, but this place is too noisy.").
-- Rant: Complaints without evidence of a visit (e.g., "Never been here, but I heard it’s terrible.").
-- Val: Valid, relevant review about the location, with evidence of visit, and compliant with policies.
+Each review must be classified into one of four categories:
+1. Advertisement (Ad)
+2. Irrelevant (Irr)
+3. Rant (Rant)
+4. Valuable (Val)
 
-Examples:
+Additionally, provide:
+- A Relevancy Score from 0 to 1:
+  • 1 = Highly useful, trustworthy, and informative
+  • 0 = Spam, misleading, or irrelevant
+- A flag for whether the review violates policies (Yes/No).
 
-Review: "Amazing service! Come to our store for 20% off via link: promo.com"
-Metadata: "Rating: 5 | Store: 49 SEATS | Reviewer: Hannah Eva"
-Category: Ad
-
-Review: "Check out our new cafe opening next week, free samples available!"
-Metadata: "Rating: 5 | Store: 49 SEATS | Reviewer: Tom Tan"
-Category: Ad
-
-Review: "This restaurant is the worst, hate the food without even trying it."
-Metadata: "Rating: 1 | Store: 49 SEATS | Reviewer: Jane Lim"
-Category: Rant
-
-Review: "Never been here, but someone told me the service is bad."
-Metadata: "Rating: 2 | Store: 49 SEATS | Reviewer: Alex Foo"
-Category: Rant
-
-Review: "Great food, friendly staff, visited last week."
-Metadata: "Rating: 4 | Store: 49 SEATS | Reviewer: Emma Wong"
-Category: Val
-
-Review: "Loved the ambiance and coffee, came here for brunch on Saturday."
-Metadata: "Rating: 5 | Store: 49 SEATS | Reviewer: Yeong KX"
-Category: Val
-
-Review: "Bought a new car yesterday, but this café is okay."
-Metadata: "Rating: 3 | Store: 49 SEATS | Reviewer: Kai Lee"
-Category: Irr
-
-Review: "I just got a new phone, nothing to do with this restaurant."
-Metadata: "Rating: 5 | Store: 49 SEATS | Reviewer: Hannah Eva"
-Category: Irr
+---
 
 Now classify this new review:
 
-Review: "{clean_text}"
-Metadata: "Rating: {rating} | Store: {store_name} | Reviewer: {reviewer_name}"
-Output only the category: Ad, Irr, Rant, or Val.
+Review: {clean_text}
+Metadata: Rating: {rating} | Store: {store_name} | Reviewer: {reviewer_name}
+Reasoning:"""
